@@ -12,9 +12,11 @@ header {
   padding: 40px 20px;
 }
 
-.logo {
-  width: 100px;
-  margin-bottom: 20px;
+img.logo {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto;
 }
 
 h1 {
