@@ -13,16 +13,17 @@
       color: #003c71;
     }
 
+    /* Center the header content */
     header {
       text-align: center;
-      background: linear-gradient(to bottom, #0071c5, #004d99);
+      background: #0071c5;
       color: white;
-      padding: 40px 20px;
+      padding: 30px 10px;
     }
 
     .logo {
       width: 100px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     h1 {
@@ -36,30 +37,38 @@
       margin: 20px auto 0;
     }
 
+    /* Timeline container styles */
     .timeline-container {
+      /* Use flex to center cards horizontally */
       display: flex;
+      justify-content: center; /* Center cards in the container */
+      align-items: flex-start;
+      /* Allow horizontal scrolling if needed */
       overflow-x: auto;
+      /* Add some space around the cards */
+      padding: 30px 10px;
+      gap: 20px; /* Space between cards */
+      /* Enable scroll snapping */
       scroll-snap-type: x mandatory;
-      padding: 40px 20px;
-      gap: 20px;
     }
 
+    /* Each card styles */
     .card {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
       background: white;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 250px;
-      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 220px;
+      padding: 15px;
       text-align: center;
+      /* Make each card snap to the start when scrolling */
+      scroll-snap-align: center;
+      flex: 0 0 auto; /* Prevent cards from shrinking */
     }
 
     .card img {
       max-width: 100%;
-      height: auto;
       border-radius: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .card h2 {
@@ -71,35 +80,54 @@
       font-size: 0.95em;
       color: #333;
     }
+
+    /* Hide the description by default */
+    .description {
+      display: none; /* Hide the description */
+    }
+
+    /* Show the description when the card is hovered */
+    .card:hover .description {
+      display: block; /* Show the description */
+      background: #e6f2fb; /* Light background for visibility */
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+      color: #003c71;
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="intel-header-logo.svg" alt="Intel Logo" class="logo">
+    <!-- Intel logo centered -->
+    <img src="img/intel-header-logo.svg" alt="Intel Logo" class="logo">
     <h1>SUSTAINABILITY THROUGH THE AGES</h1>
-    <p class="subtitle">Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.</p>
+    <p>Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.</p>
   </header>
 
+  <!-- Timeline cards in a scrollable row -->
   <main class="timeline-container">
+    <!-- Each card represents a milestone -->
     <section class="card">
-      <img src="1.jpg" alt="Intel Founded">
+      <img src="img/1.jpg" alt="Intel Founded">
       <h2>1968</h2>
-      <p>Intel Founded</p>
+      <!-- The description is hidden by default and shows on hover -->
+      <p class="description">Intel was founded in 1968 by Robert Noyce and Gordon Moore.</p>
     </section>
     <section class="card">
-      <img src="2.jpg" alt="First Microprocessor">
+      <img src="img/2.jpg" alt="First Microprocessor">
       <h2>1971</h2>
-      <p>First Microprocessor</p>
+      <p class="description">Intel introduced the world’s first microprocessor, the 4004.</p>
     </section>
     <section class="card">
-      <img src="3.jpg" alt="8086 Processor">
+      <img src="img/3.jpg" alt="8086 Processor">
       <h2>1978</h2>
-      <p>8086 Processor</p>
+      <p class="description">The 8086 processor was launched, starting the x86 architecture.</p>
     </section>
     <section class="card">
-      <img src="4.jpg" alt="386 Processor">
+      <img src="img/4.jpg" alt="386 Processor">
       <h2>1985</h2>
-      <p>Intel introduces the 386 processor with 32-bit architecture, ushering in a new era of performance and multitasking for personal computers.</p>
+      <p class="description">Intel introduces the 386 processor with 32-bit architecture, ushering in a new era of performance and multitasking for personal computers.</p>
     </section>
     <!-- Add more cards as needed -->
   </main>
