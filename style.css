@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,6 +6,7 @@ body {
   color: #003c71;
 }
 
+/* Header Styles */
 header {
   text-align: center;
   background: linear-gradient(to bottom, #0071c5, #004d99);
@@ -30,6 +32,7 @@ h1 {
   margin: 20px auto 0;
 }
 
+/* Timeline Scroll Area */
 .timeline-container {
   display: flex;
   overflow-x: auto;
@@ -38,6 +41,7 @@ h1 {
   gap: 20px;
 }
 
+/* Timeline Card */
 .card {
   flex: 0 0 auto;
   scroll-snap-align: start;
@@ -65,4 +69,3 @@ h1 {
   font-size: 0.95em;
   color: #333;
 }
-/* Add your CSS here */
