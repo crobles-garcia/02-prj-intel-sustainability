@@ -38,7 +38,7 @@
     h1::after {
       content: "";
       display: block;
-      width: 60px;
+      width: 100px;
       border-bottom: 3px solid white;
       margin: 10px auto 0;
     }
@@ -58,6 +58,7 @@
       padding: 30px 10px;
       gap: 20px;
       scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
     }
 
     .card {
@@ -70,40 +71,101 @@
       scroll-snap-align: center;
       flex: 0 0 auto;
       overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .card.reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
     .card img {
-      width: 100%;
-      height: 100%;
+      width: 115%;
+      height: 115%;
       object-fit: cover;
       border-radius: 10px;
+      position: relative;
+      left: -7.5%;
+      top: -7.5%;
     }
 
-    .card h2,
+    .card:first-of-type img {
+      filter: brightness(1.2) contrast(1.1);
+    }
+
+    .card h2 {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 60px;
+      color: white;
+      padding: 12px 10px;
+      text-align: center;
+      background: rgba(0, 60, 113, 0.85);
+      margin: 0;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
     .card .description {
       position: absolute;
       left: 0;
       right: 0;
-      color: white;
-      padding: 10px;
+      bottom: 0;
+      font-size: 0.85em;
+      padding: 12px 10px;
       text-align: center;
       background: rgba(0, 60, 113, 0.85);
-    }
-
-    .card h2 {
-      bottom: 50px;
-      font-size: 1.2em;
-      margin: 0;
-    }
-
-    .card .description {
-      bottom: 0;
-      font-size: 0.9em;
+      color: white;
       display: none;
     }
 
     .card:hover .description {
       display: block;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.95em;
+      color: #555;
+      padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .timeline-container {
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+      }
+
+      .card {
+        width: 90%;
+        max-width: 320px;
+        height: auto;
+      }
+
+      .card img {
+        height: auto;
+        width: 100%;
+        left: 0;
+        top: 0;
+      }
+
+      .card h2,
+      .card .description {
+        position: static;
+        background: #003c71;
+        color: white;
+        display: block;
+      }
     }
   </style>
 </head>
@@ -126,4 +188,37 @@
       <p class="description">Intel introduced the world’s first microprocessor, the 4004.</p>
     </section>
     <section class="card">
-      <img src="img/3.jpg" alt="
+      <img src="img/3.jpg" alt="8086 Processor">
+      <h2>1978</h2>
+      <p class="description">The 8086 processor was launched, starting the x86 architecture.</p>
+    </section>
+    <section class="card">
+      <img src="img/4.jpg" alt="386 Processor">
+      <h2>1985</h2>
+      <p class="description">Intel introduces the 386 processor with 32-bit architecture, ushering in a new era of performance and multitasking for personal computers.</p>
+    </section>
+  </main>
+
+  <footer>
+    Scroll to view timeline | Hover over cards to learn more!
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
